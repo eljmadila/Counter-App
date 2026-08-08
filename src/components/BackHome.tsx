@@ -4,9 +4,7 @@ import { ArrowLeft } from "lucide-react"
 function BackHome() {
   return (
     <div className='backhomeContainer'>
-        <button className='backHomeBtn'>
-            <Link to="/"><ArrowLeft /></Link>
-        </button>
+      <Link className='backHomeBtn' to="/"><ArrowLeft />Back</Link>
     </div>
   )
 }

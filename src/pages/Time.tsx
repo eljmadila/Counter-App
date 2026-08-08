@@ -1,13 +1,11 @@
 import BackHome from "../components/BackHome"
 
 function Time() {
+
   return (
-    <div>
+    <div className="timeContainer">
         <BackHome />
-        <div>
-            <p>Time</p>
-            <button>Increment</button>
-            <button>Decrement</button>
+        <div className="timeContent">
         </div>
     </div>
   )

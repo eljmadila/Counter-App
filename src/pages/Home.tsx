@@ -13,7 +13,7 @@ function Home() {
         </div>
         <div className='homeLinksContainer'>
             <Link to="/counter" className='homeLink'>Counter</Link>
-            <Link to="/time" className='homeLink'>Time</Link>
+            <Link to="/time" className='homeLink'>Timer</Link>
             <Link to="/quiz" className='homeLink'>Quiz</Link>
         </div>
         <div>

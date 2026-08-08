@@ -11,12 +11,12 @@ function Counter() {
     <div className="counterContainer">
         <BackHome />
         <div className='counterContent'>
-            <button onClick={() => increase()}> <Plus /></button>
+          <button className='counterLeftBtn' onClick={() => decrease()}><Minus /></button>
             <div className='counterMiddle'>
                 <h1>{count}</h1>
-                <button onClick={() => reset()}><RotateCcw /></button>
+                <button className='counterMiddleBtn' onClick={() => reset()}><RotateCcw /></button>
             </div>
-            <button onClick={() => decrease()}><Minus /></button>
+            <button className='counterRightBtn' onClick={() => increase()}> <Plus /></button>
         </div>
     </div>
   )
