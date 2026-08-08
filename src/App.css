@@ -133,3 +133,67 @@ footer {
   align-items: center;
   height: 100vh;
 }
+
+/* Card */
+.quizContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+.cardBtnsContainer {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.cardBtn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+.cardBtn:hover {
+  background-color: blueviolet;
+}
+.cardBtn:active {
+  transform: scale(0.95);
+}
+
+/* quiz */
+.quizBtnsContainer {
+  max-width: 100%;
+  /* margin: 0 auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.quizBtn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+  color: var(--text-color);
+  width: 100%;
+  text-align: center;
+}
+.quizBtn:hover {
+  background-color: blueviolet;
+}
+.quizBtn:active {
+  transform: scale(0.95);
+}

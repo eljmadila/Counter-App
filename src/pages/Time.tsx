@@ -6,6 +6,7 @@ function Time() {
     <div className="timeContainer">
         <BackHome />
         <div className="timeContent">
+          
         </div>
     </div>
   )
