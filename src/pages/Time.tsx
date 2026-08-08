@@ -1,4 +1,3 @@
-import React from "react"
 import BackHome from "../components/BackHome"
 
 function Time() {

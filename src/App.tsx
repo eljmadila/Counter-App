@@ -1,5 +1,5 @@
 import "./App.css"
-import {Routes, Route , Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Counter from "./pages/Counter"
 import Time from "./pages/Time"
 import Quiz from "./pages/Quiz"

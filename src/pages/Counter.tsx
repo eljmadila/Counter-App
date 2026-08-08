@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
 import {Plus, Minus, RotateCcw} from "lucide-react"
 import BackHome from '../components/BackHome'
+import { useState } from "react"
 
 function Counter() {
     const [count, setCount] = useState(0);
