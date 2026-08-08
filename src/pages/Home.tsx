@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
 import {Sun, Moon} from "lucide-react"
 import {Link} from "react-router-dom"
 import "../App.css"
+import { useState } from "react"
 
 function Home() {
     const [theme, setTheme] = useState("Dark")
