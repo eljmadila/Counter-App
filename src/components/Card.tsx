@@ -1,13 +1,20 @@
 
-function Card({question, options}:{question: string, options: string[]}) {
+function Card({question, options, handleChoose}:{question: string, options: string[], handleChoose: () => void}) {
   return (
     <div className="cardContainer">
       <div className="cardContent">
         <p className='cardQuestion'>{question}</p>
         <div className="cardBtnsContainer">
-          <button className='cardBtn'>{options[0]}</button>
-          <button className='cardBtn'>{options[1]}</button>
-          <button className='cardBtn'>{options[2]}</button>
+          {options.map((option, index) => (
+            <button 
+              className='cardBtn' 
+              key={index} 
+              value={option}
+              onClick={() => handleChoose(option)}
+            >
+              {option}
+            </button>
+          ))}
         </div>
       </div>
     </div>
