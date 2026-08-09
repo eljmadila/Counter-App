@@ -12,7 +12,7 @@ function Home({ dark, setDark }: { dark: boolean; setDark: (value: boolean) => v
     <main className='homeSection' id="main-content">
       <header className='homeTitleContainer'>
         <h1 className='title' id="app-title">Dracarys App</h1>
-        <p className='description' id="app-description">A simple application with counter, timer and quiz</p>
+        <p className='description' id="app-description">A simple application with counter, Stop Watch and quiz</p>
       </header>
       <nav className='homeLinksContainer' aria-label="Main Navigation">
         <Link to="/counter" className='homeLink' id="nav-link-counter">Counter</Link>

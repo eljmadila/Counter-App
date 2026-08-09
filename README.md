@@ -1,16 +1,17 @@
 # 🐉 Dracarys App
 
-A modern, responsive multi-feature React application featuring a **Counter**, **Stopwatch Timer**, **Trivia Quiz**, and dynamic **Dark/Light Theme Switching**. Built with React, TypeScript, Vite, and Lucide React icons.
+A modern, responsive multi-feature React application featuring a **Counter**, **Stop Watch**, **Trivia Quiz**, and dynamic **Dark/Light Theme Switching**. Built with React, TypeScript, Vite, and Lucide React icons.
 
 ---
 
 ## ✨ Features
 
-- 🌗 **Dark / Light Theme Switcher**: Toggle theme seamlessly across the entire application with custom CSS variables and smooth transitions.
+- 🌗 **Dark / Light Theme Switcher**: Toggle theme seamlessly across the entire application with `localStorage` memory persistence and smooth transitions.
 - 🔢 **Counter App**: Interactive counter with increment, decrement, and reset actions.
-- ⏱️ **Timer App**: Digital stopwatch displaying formatted `HH : MM : SS` with Start, Pause, and Reset controls.
-- 🧠 **Trivia Quiz**: Fetches multiple-choice questions dynamically from OpenTDB API, complete with live score tracking and a custom loading spinner.
-- 🎨 **Modern UI**: Clean layout, smooth hover effects, responsive design, and intuitive navigation.
+- ⏱️ **Stop Watch**: Digital stopwatch displaying formatted `HH : MM : SS` with Start, Pause, and Reset controls.
+- 🧠 **Trivia Quiz**: Dynamic multiple-choice questions from OpenTDB API with a custom loading spinner, automatic HTML entity decoding, real-time visual feedback (green/red), and score protection.
+- ⚡ **Performance Optimized**: Built with code-splitting (`React.lazy`), component memoization (`React.memo`, `useCallback`), and hardware-accelerated CSS animations.
+- 🔍 **SEO & Accessibility**: Complete OpenGraph, Twitter Cards, semantic HTML5 structure, aria labels, and dynamic route page titles.
 
 ---
 
@@ -36,7 +37,7 @@ Make sure you have Node.js installed on your machine:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/.../counterapp.git
+   git clone https://github.com/eljmadila/Counter-App.git
    cd counterapp
    ```
 
