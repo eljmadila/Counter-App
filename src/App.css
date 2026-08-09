@@ -28,6 +28,7 @@
 
   a {
     text-decoration: none;
+    color: var(--text-color);
     transition: var(--transition);
   }
   a:hover {
@@ -41,11 +42,22 @@
 }
 
 .themeButton {
-  border-radius: 50%;
+  border-radius: 20px;
   border: 1px solid var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 20px;
+  transition: var(--transition);
+}
+
+.themeButton div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 button {
@@ -158,6 +170,7 @@ footer {
   gap: 15px;
 }
 .cardBtn {
+  background-color: transparent;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid var(--text-color);
@@ -182,6 +195,7 @@ footer {
   gap: 15px;
 }
 .quizBtn {
+  background-color: transparent;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid var(--text-color);
@@ -211,4 +225,52 @@ footer {
   color: green;
   font-size: 20px;
   font-weight: bold;
+}
+/* toggle dark light */
+.dark {
+  --bg-color: #111;
+  --text-color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+.light {
+  --bg-color: #ffffff;
+  --text-color: #111;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+/* Loader */
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 200px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: var(--text-color);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loaderText {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.85;
 }
