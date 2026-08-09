@@ -45,7 +45,7 @@ function Quiz() {
     <div>
         <BackHome />
         <div className='quizContainer'>
-            <Card question={cardData.question}  options={[...cardData.options, cardData.answer].sort()} handleChoose = {choosedFunc}/>
+            <Card question={cardData.question}  options={[...cardData.options, cardData.answer].sort()} handleChoose= {choosedFunc}/>
 
             <p className='answer'>The answer is : {choosed ? <p className='answerSpan'>{cardData.answer}</p> : ''}</p>
             <p className='score'>Your score : <span className='scoreSpan'> {score}</span></p>

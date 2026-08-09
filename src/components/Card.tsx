@@ -1,5 +1,5 @@
 
-function Card({question, options, handleChoose}:{question: string, options: string[], handleChoose: () => void}) {
+function Card({question, options, handleChoose}:{question: string, options: string[], handleChoose: (value: string) => void}) {
   return (
     <div className="cardContainer">
       <div className="cardContent">
