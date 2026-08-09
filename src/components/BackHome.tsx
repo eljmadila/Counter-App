@@ -3,9 +3,11 @@ import { ArrowLeft } from "lucide-react"
 
 function BackHome() {
   return (
-    <div className='backhomeContainer'>
-      <Link className='backHomeBtn' to="/"><ArrowLeft />Back</Link>
-    </div>
+    <nav className='backhomeContainer' aria-label="Back to home navigation">
+      <Link className='backHomeBtn' id="back-home-link" aria-label="Back to Home Page" to="/">
+        <ArrowLeft />Back
+      </Link>
+    </nav>
   )
 }
 

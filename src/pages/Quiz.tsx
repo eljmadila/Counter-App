@@ -49,11 +49,12 @@ function Quiz() {
   }
 
   useEffect(() => {
+    document.title = "Trivia Quiz | Dracarys App"
     fetchData()
   }, [])
   
   return (
-    <div>
+    <main className="quizPage" id="quiz-page">
       <BackHome />
       <div className='quizContainer'>
         {loading ? (
@@ -62,16 +63,16 @@ function Quiz() {
           <>
             <Card question={cardData.question} options={[...cardData.options, cardData.answer].sort()} handleChoose={choosedFunc}/>
 
-            <p className='answer'>The answer is : {choosed ? <span className='answerSpan'>{cardData.answer}</span> : ''}</p>
-            <p className='score'>Your score : <span className='scoreSpan'> {score}</span></p>
+            <p className='answer' id="quiz-answer-display">The answer is : {choosed ? <span className='answerSpan'>{cardData.answer}</span> : ''}</p>
+            <p className='score' id="quiz-score-display">Your score : <span className='scoreSpan'> {score}</span></p>
 
             <div className='quizBtnsContainer'>
-              <button className='quizBtn' onClick={fetchData}>Skip</button>
+              <button className='quizBtn' id="quiz-skip-btn" aria-label="Skip Question" onClick={fetchData}>Skip</button>
             </div>
           </>
         )}
       </div>
-    </div>
+    </main>
   )
 }
 

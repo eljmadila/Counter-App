@@ -6,6 +6,10 @@ function Time() {
   const [seconds, setSeconds] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
 
+  useEffect(() => {
+    document.title = "Stopwatch Timer | Dracarys App"
+  }, [])
+
   // Start interval when timer is running
   useEffect(() => {
     let interval: number | undefined
@@ -43,26 +47,26 @@ function Time() {
   }
 
   return (
-    <div className="timeContainer">
+    <main className="timeContainer" id="timer-page">
       <BackHome />
       <div className="timeContent">
-        <h1 className="timeDisplay">{formatTime(seconds)}</h1>
+        <h1 className="timeDisplay" id="timer-display">{formatTime(seconds)}</h1>
       </div>
       <div className="timeBtnsContainer">
         {!isRunning ? (
-          <button className="timeBtn" onClick={handleStart}>
+          <button className="timeBtn" id="timer-start-btn" aria-label="Start Timer" onClick={handleStart}>
             <Play size={20} /> Start
           </button>
         ) : (
-          <button className="timeBtn" onClick={handlePause}>
+          <button className="timeBtn" id="timer-pause-btn" aria-label="Pause Timer" onClick={handlePause}>
             <Pause size={20} /> Pause
           </button>
         )}
-        <button className="timeBtn" onClick={handleReset}>
+        <button className="timeBtn" id="timer-reset-btn" aria-label="Reset Timer" onClick={handleReset}>
           <RotateCcw size={20} /> Reset
         </button>
       </div>
-    </div>
+    </main>
   )
 }
 
