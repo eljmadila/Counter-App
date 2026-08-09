@@ -16,7 +16,7 @@ function Home({ dark, setDark }: { dark: boolean; setDark: (value: boolean) => v
       </header>
       <nav className='homeLinksContainer' aria-label="Main Navigation">
         <Link to="/counter" className='homeLink' id="nav-link-counter">Counter</Link>
-        <Link to="/time" className='homeLink' id="nav-link-timer">Timer</Link>
+        <Link to="/time" className='homeLink' id="nav-link-timer">Stop Watch</Link>
         <Link to="/quiz" className='homeLink' id="nav-link-quiz">Quiz</Link>
       </nav>
       <div>

@@ -1,17 +1,17 @@
 import { Plus, Minus, RotateCcw } from "lucide-react"
 import BackHome from '../components/BackHome'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, memo } from "react"
 
-function Counter() {
-  const [count, setCount] = useState(0);
+const Counter = memo(function Counter() {
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     document.title = "Counter | Dracarys App"
   }, [])
 
-  const increase = () => setCount(count + 1);
-  const decrease = () => { if (count > 0) { setCount(count - 1) } };
-  const reset = () => setCount(0);
+  const increase = useCallback(() => setCount((prev) => prev + 1), []);
+  const decrease = useCallback(() => setCount((prev) => (prev > 0 ? prev - 1 : 0)), []);
+  const reset = useCallback(() => setCount(0), []);
 
   return (
     <main className="counterContainer" id="counter-page">
@@ -32,6 +32,6 @@ function Counter() {
       </div>
     </main>
   )
-}
+})
 
 export default Counter

@@ -1,5 +1,7 @@
 
-function Card({question, options, handleChoose}:{question: string, options: string[], handleChoose: (value: string) => void}) {
+import { memo } from "react"
+
+const Card = memo(function Card({question, options, handleChoose}:{question: string, options: string[], handleChoose: (value: string) => void}) {
   return (
     <div className="cardContainer" id="quiz-card">
       <div className="cardContent">
@@ -21,6 +23,6 @@ function Card({question, options, handleChoose}:{question: string, options: stri
       </div>
     </div>
   )
-}
+})
 
 export default Card

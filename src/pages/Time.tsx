@@ -1,8 +1,21 @@
 import BackHome from "../components/BackHome"
 import { Play, Pause, RotateCcw } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, memo } from "react"
 
-function Time() {
+// Helper function to format seconds into HH : MM : SS (pure function outside render loop)
+const formatTime = (totalSeconds: number): string => {
+  const hrs = Math.floor(totalSeconds / 3600)
+  const mins = Math.floor((totalSeconds % 3600) / 60)
+  const secs = totalSeconds % 60
+
+  const formattedHours = String(hrs).padStart(2, "0")
+  const formattedMinutes = String(mins).padStart(2, "0")
+  const formattedSeconds = String(secs).padStart(2, "0")
+
+  return `${formattedHours} : ${formattedMinutes} : ${formattedSeconds}`
+}
+
+const Time = memo(function Time() {
   const [seconds, setSeconds] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
 
@@ -26,25 +39,12 @@ function Time() {
   }, [isRunning])
 
   // Timer controls
-  const handleStart = () => setIsRunning(true)
-  const handlePause = () => setIsRunning(false)
-  const handleReset = () => {
+  const handleStart = useCallback(() => setIsRunning(true), [])
+  const handlePause = useCallback(() => setIsRunning(false), [])
+  const handleReset = useCallback(() => {
     setIsRunning(false)
     setSeconds(0)
-  }
-
-  // Helper function to format seconds into HH : MM : SS
-  const formatTime = (totalSeconds: number) => {
-    const hrs = Math.floor(totalSeconds / 3600)
-    const mins = Math.floor((totalSeconds % 3600) / 60)
-    const secs = totalSeconds % 60
-
-    const formattedHours = String(hrs).padStart(2, "0")
-    const formattedMinutes = String(mins).padStart(2, "0")
-    const formattedSeconds = String(secs).padStart(2, "0")
-
-    return `${formattedHours} : ${formattedMinutes} : ${formattedSeconds}`
-  }
+  }, [])
 
   return (
     <main className="timeContainer" id="timer-page">
@@ -68,6 +68,6 @@ function Time() {
       </div>
     </main>
   )
-}
+})
 
 export default Time

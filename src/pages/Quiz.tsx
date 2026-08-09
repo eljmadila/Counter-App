@@ -1,7 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import BackHome from '../components/BackHome'
 import Card from '../components/Card'
 import Loader from '../components/Loader'
+
+// Robust HTML entity decoder
+const decodeHTML = (html: string): string => {
+  if (!html) return ""
+  const textarea = document.createElement("textarea")
+  textarea.innerHTML = html
+  return textarea.value
+}
 
 function Quiz() {
   const [loading, setLoading] = useState(true)
@@ -13,18 +21,24 @@ function Quiz() {
     options: []
   });
 
-  const fetchData = async () => {
+  const timerRef = useRef<number | null>(null)
+
+  const fetchData = useCallback(async () => {
     setLoading(true)
     try {
       const res = await fetch("https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple");
       const data = await res.json();
       if (data.results && data.results.length > 0) {
+        const item = data.results[0]
+        const decodedQuestion = decodeHTML(item.question)
+        const decodedAnswer = decodeHTML(item.correct_answer)
+        const decodedIncorrect = item.incorrect_answers.map((opt: string) => decodeHTML(opt))
+        const allOptions = [...decodedIncorrect, decodedAnswer].sort()
+
         setCardData({
-          question: data.results[0].question.replace(/&#039;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&'),
-          answer: data.results[0].correct_answer.replace(/&#039;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&'),
-          options: data.results[0].incorrect_answers.map((option: string) =>
-            option.replace(/&#039;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')
-          ),
+          question: decodedQuestion,
+          answer: decodedAnswer,
+          options: allOptions
         });
       }
     } catch (error) {
@@ -32,26 +46,32 @@ function Quiz() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [])
 
-  const choosedFunc = (value: string) => {
+  const choosedFunc = useCallback((value: string) => {
     if (value === cardData.answer) {
       setScore((prev) => prev + 1)
     }
 
     setChoosed(true)
 
-    setTimeout(() => {
+    if (timerRef.current) window.clearTimeout(timerRef.current)
+
+    timerRef.current = window.setTimeout(() => {
       fetchData().then(() => {
         setChoosed(false) 
       })
     }, 1500)
-  }
+  }, [cardData.answer, fetchData])
 
   useEffect(() => {
     document.title = "Trivia Quiz | Dracarys App"
     fetchData()
-  }, [])
+
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+    }
+  }, [fetchData])
   
   return (
     <main className="quizPage" id="quiz-page">
@@ -61,7 +81,7 @@ function Quiz() {
           <Loader text="Fetching quiz questions..." />
         ) : (
           <>
-            <Card question={cardData.question} options={[...cardData.options, cardData.answer].sort()} handleChoose={choosedFunc}/>
+            <Card question={cardData.question} options={cardData.options} handleChoose={choosedFunc}/>
 
             <p className='answer' id="quiz-answer-display">The answer is : {choosed ? <span className='answerSpan'>{cardData.answer}</span> : ''}</p>
             <p className='score' id="quiz-score-display">Your score : <span className='scoreSpan'> {score}</span></p>

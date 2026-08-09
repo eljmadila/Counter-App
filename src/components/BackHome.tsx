@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from "lucide-react"
+import { memo } from "react"
 
-function BackHome() {
+const BackHome = memo(function BackHome() {
   return (
     <nav className='backhomeContainer' aria-label="Back to home navigation">
       <Link className='backHomeBtn' id="back-home-link" aria-label="Back to Home Page" to="/">
@@ -9,6 +10,6 @@ function BackHome() {
       </Link>
     </nav>
   )
-}
+})
 
 export default BackHome

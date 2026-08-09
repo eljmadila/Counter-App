@@ -294,6 +294,7 @@ footer {
 .spinner {
   animation: spin 1s linear infinite;
   color: var(--text-color);
+  will-change: transform;
 }
 
 @keyframes spin {
@@ -309,4 +310,11 @@ footer {
   font-size: 1.2rem;
   color: var(--text-color);
   opacity: 0.85;
+}
+
+/* Accessibility & Keyboard Navigation Focus */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid blueviolet;
+  outline-offset: 4px;
 }
