@@ -1,13 +1,67 @@
 import BackHome from "../components/BackHome"
+import { Play, Pause, RotateCcw } from "lucide-react"
+import { useState, useEffect } from "react"
 
 function Time() {
+  const [seconds, setSeconds] = useState<number>(0)
+  const [isRunning, setIsRunning] = useState<boolean>(false)
+
+  // Start interval when timer is running
+  useEffect(() => {
+    let interval: number | undefined
+
+    if (isRunning) {
+      interval = window.setInterval(() => {
+        setSeconds((prev) => prev + 1)
+      }, 1000)
+    }
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [isRunning])
+
+  // Timer controls
+  const handleStart = () => setIsRunning(true)
+  const handlePause = () => setIsRunning(false)
+  const handleReset = () => {
+    setIsRunning(false)
+    setSeconds(0)
+  }
+
+  // Helper function to format seconds into HH : MM : SS
+  const formatTime = (totalSeconds: number) => {
+    const hrs = Math.floor(totalSeconds / 3600)
+    const mins = Math.floor((totalSeconds % 3600) / 60)
+    const secs = totalSeconds % 60
+
+    const formattedHours = String(hrs).padStart(2, "0")
+    const formattedMinutes = String(mins).padStart(2, "0")
+    const formattedSeconds = String(secs).padStart(2, "0")
+
+    return `${formattedHours} : ${formattedMinutes} : ${formattedSeconds}`
+  }
 
   return (
     <div className="timeContainer">
-        <BackHome />
-        <div className="timeContent">
-          
-        </div>
+      <BackHome />
+      <div className="timeContent">
+        <h1 className="timeDisplay">{formatTime(seconds)}</h1>
+      </div>
+      <div className="timeBtnsContainer">
+        {!isRunning ? (
+          <button className="timeBtn" onClick={handleStart}>
+            <Play size={20} /> Start
+          </button>
+        ) : (
+          <button className="timeBtn" onClick={handlePause}>
+            <Pause size={20} /> Pause
+          </button>
+        )}
+        <button className="timeBtn" onClick={handleReset}>
+          <RotateCcw size={20} /> Reset
+        </button>
+      </div>
     </div>
   )
 }
