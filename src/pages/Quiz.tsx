@@ -14,6 +14,7 @@ const decodeHTML = (html: string): string => {
 function Quiz() {
   const [loading, setLoading] = useState(true)
   const [choosed, setChoosed] = useState(false)
+  const [selectedOption, setSelectedOption] = useState<string | null>(null)
   const [score, setScore] = useState(0);
   const [cardData, setCardData] = useState<{ question: string; answer: string; options: string[] }>({
     question: "",
@@ -25,6 +26,8 @@ function Quiz() {
 
   const fetchData = useCallback(async () => {
     setLoading(true)
+    setChoosed(false)
+    setSelectedOption(null)
     try {
       const res = await fetch("https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple");
       const data = await res.json();
@@ -49,20 +52,21 @@ function Quiz() {
   }, [])
 
   const choosedFunc = useCallback((value: string) => {
+    if (choosed) return // Prevent changing answer or multi-clicking!
+
+    setChoosed(true)
+    setSelectedOption(value)
+
     if (value === cardData.answer) {
       setScore((prev) => prev + 1)
     }
 
-    setChoosed(true)
-
     if (timerRef.current) window.clearTimeout(timerRef.current)
 
     timerRef.current = window.setTimeout(() => {
-      fetchData().then(() => {
-        setChoosed(false) 
-      })
+      fetchData()
     }, 1500)
-  }, [cardData.answer, fetchData])
+  }, [choosed, cardData.answer, fetchData])
 
   useEffect(() => {
     document.title = "Trivia Quiz | Dracarys App"
@@ -81,7 +85,14 @@ function Quiz() {
           <Loader text="Fetching quiz questions..." />
         ) : (
           <>
-            <Card question={cardData.question} options={cardData.options} handleChoose={choosedFunc}/>
+            <Card 
+              question={cardData.question} 
+              options={cardData.options} 
+              handleChoose={choosedFunc}
+              disabled={choosed}
+              selectedOption={selectedOption}
+              correctAnswer={cardData.answer}
+            />
 
             <p className='answer' id="quiz-answer-display">The answer is : {choosed ? <span className='answerSpan'>{cardData.answer}</span> : ''}</p>
             <p className='score' id="quiz-score-display">Your score : <span className='scoreSpan'> {score}</span></p>
