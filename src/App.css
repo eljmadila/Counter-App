@@ -1,14 +1,109 @@
 /* ==========================================================================
-   Home
+   Global Theme & Page Layout
+   ========================================================================== */
+.dark {
+  --bg-color: #0f1117;
+  --text-color: #f0f4f8;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #8a2be2;
+  --accent-hover: #9d4edd;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light {
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --card-bg: rgba(0, 0, 0, 0.03);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --accent-color: #7c3aed;
+  --accent-hover: #6d28d9;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   Header Navigation / Back Home Button
+   ========================================================================== */
+.backhomeContainer {
+  position: absolute;
+  top: clamp(14px, 3vw, 24px);
+  left: clamp(14px, 4vw, 24px);
+  z-index: 50;
+}
+
+.backHomeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: 22px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.backHomeBtn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+}
+
+.backHomeBtn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   Footer Component
+   ========================================================================== */
+footer {
+  margin-top: auto;
+  padding: 20px 16px;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  text-align: center;
+  width: 100%;
+  opacity: 0.75;
+  letter-spacing: 0.2px;
+}
+
+/* ==========================================================================
+   Home Section
    ========================================================================== */
 .homeSection {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: clamp(24px, 4vw, 36px);
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 20px;
+  flex: 1;
+  padding: clamp(70px, 10vw, 100px) 20px 40px 20px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -16,49 +111,85 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  width: 100%;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2.2rem, 7.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  background: linear-gradient(135deg, var(--text-color) 30%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  opacity: 0.85;
+  max-width: 440px;
+  line-height: 1.45;
 }
 
 .homeLinksContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  max-width: 340px;
+  margin: 8px 0;
 }
 
 .homeLinksContainer a {
   text-decoration: none;
-  color: var(--text-color);
-  transition: var(--transition);
-}
-
-.homeLinksContainer a:hover {
-  color: blueviolet;
-  transform: translateX(10px);
 }
 
 .homeLink {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 24px;
+  font-size: clamp(1.05rem, 3vw, 1.2rem);
+  font-weight: 600;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.homeLink:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+}
+
+.homeLink:active {
+  transform: scale(0.98);
 }
 
 .themeButton {
-  border-radius: 20px;
-  border: 1px solid var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
-  cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 10px 20px;
+  min-height: 46px;
+  padding: 10px 24px;
+  border-radius: 23px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: var(--transition);
 }
 
@@ -68,47 +199,23 @@
   gap: 8px;
 }
 
-button {
-  padding: 15px 25px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+.themeButton:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-footer {
-  position: fixed;
-  bottom: 20px;
-  font-size: 1rem;
-  padding-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
-  text-align: center;
+.themeButton:active {
+  transform: scale(0.96);
 }
 
 /* ==========================================================================
-   Back home button
+   Buttons Base
    ========================================================================== */
-.backhomeContainer {
-  position: fixed;
-  top: 15px;
-  left: 20px;
-  z-index: 10;
-}
-
-.backHomeBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--text-color);
+button {
+  font-family: inherit;
+  user-select: none;
 }
 
 /* ==========================================================================
@@ -117,45 +224,90 @@ footer {
 .counterContainer {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: clamp(24px, 5vw, 36px);
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 20px;
-}
-
-.counterContainer button {
-  padding: 15px 25px;
-  border-radius: 15px;
-  border: 1px solid var(--text-color);
-  cursor: pointer;
-}
-
-.counterContainer button a {
-  text-decoration: none;
-  color: var(--text-color);
-}
-
-.counterContainer button:active {
-  transform: scale(0.95);
+  flex: 1;
+  padding: clamp(70px, 10vw, 90px) 20px 40px 20px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .counterContent {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 25px;
+  justify-content: center;
+  gap: clamp(14px, 4vw, 32px);
+  width: 100%;
+}
+
+.counterLeftBtn,
+.counterRightBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 52px;
+  width: clamp(52px, 13vw, 70px);
+  height: clamp(52px, 13vw, 70px);
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.counterLeftBtn:hover,
+.counterRightBtn:hover,
+.counterMiddleBtn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+}
+
+.counterLeftBtn:active,
+.counterRightBtn:active,
+.counterMiddleBtn:active {
+  transform: scale(0.94);
 }
 
 .counterMiddle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
+  min-width: 90px;
 }
 
 .counterMiddle h1 {
-  font-size: 5rem;
+  font-size: clamp(3.2rem, 15vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.counterMiddleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 /* ==========================================================================
@@ -164,46 +316,68 @@ footer {
 .timeContainer {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: clamp(24px, 5vw, 36px);
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 20px;
+  flex: 1;
+  padding: clamp(70px, 10vw, 90px) 20px 40px 20px;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.timeContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .timeDisplay {
-  font-size: 5rem;
+  font-size: clamp(2rem, 7.5vw, 4.6rem);
   font-weight: 700;
-  font-family: monospace, sans-serif;
-  letter-spacing: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: clamp(1px, 0.5vw, 2px);
   text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0 8px;
 }
 
 .timeBtnsContainer {
   display: flex;
-  gap: 15px;
-  align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
 }
 
 .timeBtn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  min-width: 125px;
   padding: 12px 24px;
-  border-radius: 8px;
-  border: 1px solid var(--text-color);
-  background-color: transparent;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
   color: var(--text-color);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
 }
 
 .timeBtn:hover {
-  background-color: blueviolet;
-  color: #fff;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
 }
 
 .timeBtn:active {
@@ -211,75 +385,95 @@ footer {
 }
 
 /* ==========================================================================
-   Quiz / Card
+   Quiz Page & Card
    ========================================================================== */
+.quizPage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(70px, 8vw, 90px) 16px 40px 16px;
+  width: 100%;
+}
+
 .quizContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 20px;
-  width: 100%;
-}
-
-.cardContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-}
-
-.cardContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   width: 100%;
+  max-width: 580px;
+  margin: auto;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: clamp(20px, 5vw, 30px);
+  border-radius: 20px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .cardQuestion {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+  font-weight: 600;
   text-align: center;
-  padding: 0 10px;
+  line-height: 1.45;
+  word-break: break-word;
 }
 
 .cardBtnsContainer {
-  margin: 30px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  gap: 12px;
   width: 100%;
+  margin-top: 6px;
 }
 
 .cardBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--card-border);
   background-color: transparent;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--text-color);
-  cursor: pointer;
   color: var(--text-color);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  font-weight: 500;
+  cursor: pointer;
   width: 100%;
   text-align: center;
-  font-size: 1rem;
+  word-break: break-word;
+  transition: var(--transition);
 }
 
 .cardBtn:hover:not(:disabled) {
-  background-color: blueviolet;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .cardBtn:active:not(:disabled) {
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
 .cardBtn:disabled {
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .cardBtn.correct {
@@ -296,86 +490,72 @@ footer {
   font-weight: 600;
 }
 
+.answer,
+.score {
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.answerSpan,
+.scoreSpan {
+  color: #4caf50;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+  font-weight: 700;
+}
+
 .quizBtnsContainer {
-  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 220px;
+  margin-top: 4px;
 }
 
 .quizBtn {
-  background-color: transparent;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--text-color);
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
   color: var(--text-color);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
   width: 100%;
   text-align: center;
+  transition: var(--transition);
 }
 
 .quizBtn:hover {
-  background-color: blueviolet;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .quizBtn:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
-.answer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  padding: 0 10px;
-}
-
-.answerSpan {
-  color: green;
-  font-weight: bold;
-}
-
-.scoreSpan {
-  color: green;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* ==========================================================================
-   Theme: dark / light
-   ========================================================================== */
-.dark {
-  --bg-color: #111;
-  --text-color: #fff;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  transition: var(--transition);
-}
-
-.light {
-  --bg-color: #ffffff;
-  --text-color: #111;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  transition: var(--transition);
-}
-
-/* ==========================================================================
-   Loader
-   ========================================================================== */
+/* Loader */
 .loaderContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  min-height: 200px;
+  gap: 16px;
+  min-height: 220px;
+  padding: 20px;
 }
 
 .spinner {
@@ -394,235 +574,73 @@ footer {
 }
 
 .loaderText {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   color: var(--text-color);
   opacity: 0.85;
   text-align: center;
-  padding: 0 20px;
 }
 
-/* ==========================================================================
-   Accessibility & Keyboard Navigation Focus
-   ========================================================================== */
+/* Accessibility Focus States */
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid blueviolet;
-  outline-offset: 4px;
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
 }
 
 /* ==========================================================================
-   RESPONSIVE — Tablet
-   Applies to screens 1024px and below (large phones landscape → tablets)
+   Breakpoints & Mobile/Tablet Enhancements
    ========================================================================== */
-@media (max-width: 1024px) {
-  .title {
-    font-size: 2.5rem;
-  }
 
-  .description {
-    font-size: 1.25rem;
-  }
-
-  .homeLink {
-    font-size: 1.3rem;
-  }
-
-  .counterMiddle h1 {
-    font-size: 4rem;
-  }
-
-  .timeDisplay {
-    font-size: 4rem;
-  }
-
-  .cardQuestion {
-    font-size: 1.3rem;
-  }
-}
-
-/* ==========================================================================
-   RESPONSIVE — Small tablets / large phones
-   Applies to screens 768px and below
-   ========================================================================== */
-@media (max-width: 768px) {
-  .homeSection,
-  .counterContainer,
-  .timeContainer,
-  .quizContainer {
-    height: auto;
-    min-height: 100vh;
-    padding: 90px 16px 100px;
-    justify-content: flex-start;
-  }
-
-  .title {
-    font-size: 2.1rem;
-  }
-
-  .description {
-    font-size: 1.1rem;
-  }
-
-  .homeLink {
-    font-size: 1.2rem;
-  }
-
-  .counterContent {
-    gap: 16px;
-  }
-
-  .counterMiddle h1 {
-    font-size: 3.2rem;
-  }
-
-  .counterContainer button {
-    padding: 12px 18px;
-  }
-
-  .timeDisplay {
-    font-size: 3rem;
-    letter-spacing: 1px;
-  }
-
-  .timeBtn {
-    padding: 10px 18px;
-    font-size: 1rem;
-  }
-
-  .cardQuestion {
-    font-size: 1.15rem;
+/* Tablet Optimization (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .homeLinksContainer {
+    max-width: 400px;
   }
 
   .cardBtnsContainer {
-    margin: 20px 0;
-  }
-
-  .cardBtn {
-    padding: 12px;
-    font-size: 0.95rem;
-  }
-
-  footer {
-    position: static;
-    margin-top: 24px;
-  }
-
-  .backhomeContainer {
-    top: 12px;
-    left: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 }
 
-/* ==========================================================================
-   RESPONSIVE — Mobile
-   Applies to screens 480px and below
-   ========================================================================== */
-@media (max-width: 480px) {
-  .homeSection,
-  .counterContainer,
-  .timeContainer,
-  .quizContainer {
-    padding: 80px 12px 90px;
-    gap: 20px;
-  }
-
-  .title {
-    font-size: 1.75rem;
-  }
-
-  .description {
-    font-size: 1rem;
-    padding: 0 10px;
-  }
-
-  .homeLink {
-    font-size: 1.05rem;
-  }
-
-  .themeButton {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
-
+/* Compact Mobile Screens (< 380px) */
+@media (max-width: 379px) {
   .counterContent {
-    flex-direction: row;
-    gap: 12px;
-  }
-
-  .counterMiddle h1 {
-    font-size: 2.5rem;
-  }
-
-  .counterContainer button {
-    padding: 10px 14px;
-  }
-
-  .timeDisplay {
-    font-size: 2.25rem;
-    letter-spacing: 0.5px;
-  }
-
-  .timeBtnsContainer {
     gap: 10px;
   }
 
-  .timeBtn {
-    padding: 10px 14px;
-    font-size: 0.9rem;
-    flex: 1 1 auto;
-    justify-content: center;
-  }
-
-  .cardContainer {
-    max-width: 100%;
-  }
-
-  .cardQuestion {
-    font-size: 1rem;
-  }
-
-  .cardBtn {
-    padding: 12px 10px;
-    font-size: 0.9rem;
-  }
-
-  .answer,
-  .score {
-    font-size: 0.9rem;
-  }
-
-  .scoreSpan {
-    font-size: 1rem;
-  }
-
-  .quizBtn {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  button {
-    padding: 12px 20px;
-  }
-}
-
-/* ==========================================================================
-   RESPONSIVE — Very small phones
-   Applies to screens 360px and below
-   ========================================================================== */
-@media (max-width: 360px) {
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .counterMiddle h1 {
-    font-size: 2rem;
+  .counterLeftBtn,
+  .counterRightBtn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .timeDisplay {
-    font-size: 1.75rem;
+    font-size: 1.7rem;
   }
 
-  .cardQuestion {
+  .timeBtn {
+    min-width: 110px;
+    padding: 10px 16px;
     font-size: 0.95rem;
+  }
+}
+
+/* Short Height / Mobile Landscape Orientation (< 600px height) */
+@media (max-height: 600px) {
+  .homeSection,
+  .counterContainer,
+  .timeContainer,
+  .quizPage {
+    padding-top: 65px;
+    padding-bottom: 20px;
+  }
+
+  .backhomeContainer {
+    top: 10px;
+    left: 14px;
   }
 }
