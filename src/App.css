@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Home
+   ========================================================================== */
 .homeSection {
   display: flex;
   flex-direction: column;
@@ -5,13 +8,17 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
+  text-align: center;
 }
+
 .homeTitleContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
 }
+
 .title {
   font-size: 3rem;
 }
@@ -25,16 +32,17 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+}
 
-  a {
-    text-decoration: none;
-    color: var(--text-color);
-    transition: var(--transition);
-  }
-  a:hover {
-    color: blueviolet;
-    transform: translateX(10px);
-  }
+.homeLinksContainer a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.homeLinksContainer a:hover {
+  color: blueviolet;
+  transform: translateX(10px);
 }
 
 .homeLink {
@@ -66,6 +74,7 @@ button {
   border: none;
   cursor: pointer;
 }
+
 footer {
   position: fixed;
   bottom: 20px;
@@ -75,17 +84,24 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
 }
 
-/* Back home button */
+/* ==========================================================================
+   Back home button
+   ========================================================================== */
 .backhomeContainer {
   position: fixed;
   top: 15px;
   left: 20px;
+  z-index: 10;
 }
 
 .backHomeBtn {
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: 10px 20px;
   border-radius: 50%;
@@ -93,10 +109,11 @@ footer {
   cursor: pointer;
   text-decoration: none;
   color: var(--text-color);
-
 }
 
-/* Counter App */
+/* ==========================================================================
+   Counter App
+   ========================================================================== */
 .counterContainer {
   display: flex;
   flex-direction: column;
@@ -104,39 +121,46 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
-  button {
-    padding: 15px 25px;
-    border-radius: 15px;
-    border: 1px solid var(--text-color);
-    cursor: pointer;
-    a {
-      text-decoration: none;
-      color: var(--text-color);
-    }
-  }
-  button:active {
-    transform: scale(0.95);
-  }
+  padding: 20px;
 }
+
+.counterContainer button {
+  padding: 15px 25px;
+  border-radius: 15px;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+}
+
+.counterContainer button a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.counterContainer button:active {
+  transform: scale(0.95);
+}
+
 .counterContent {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 25px;
 }
+
 .counterMiddle {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-
-  h1 {
-    font-size: 5rem;
-  }
 }
 
-/* Time App */
+.counterMiddle h1 {
+  font-size: 5rem;
+}
+
+/* ==========================================================================
+   Time / Stopwatch App
+   ========================================================================== */
 .timeContainer {
   display: flex;
   flex-direction: column;
@@ -144,6 +168,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
 }
 
 .timeDisplay {
@@ -151,12 +176,15 @@ footer {
   font-weight: 700;
   font-family: monospace, sans-serif;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .timeBtnsContainer {
   display: flex;
   gap: 15px;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .timeBtn {
@@ -182,7 +210,9 @@ footer {
   transform: scale(0.95);
 }
 
-/* Card */
+/* ==========================================================================
+   Quiz / Card
+   ========================================================================== */
 .quizContainer {
   display: flex;
   flex-direction: column;
@@ -190,21 +220,43 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
+  width: 100%;
 }
+
 .cardContainer {
   display: flex;
   flex-direction: column;
   gap: 25px;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 600px;
 }
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.cardQuestion {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 10px;
+}
+
 .cardBtnsContainer {
-  margin: 30px;
+  margin: 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  width: 100%;
 }
+
 .cardBtn {
   background-color: transparent;
   padding: 10px;
@@ -214,23 +266,29 @@ footer {
   color: var(--text-color);
   width: 100%;
   text-align: center;
+  font-size: 1rem;
 }
+
 .cardBtn:hover:not(:disabled) {
   background-color: blueviolet;
 }
+
 .cardBtn:active:not(:disabled) {
   transform: scale(0.95);
 }
+
 .cardBtn:disabled {
   cursor: not-allowed;
   opacity: 0.8;
 }
+
 .cardBtn.correct {
   background-color: #2e7d32 !important;
   color: #ffffff !important;
   border-color: #4caf50 !important;
   font-weight: 600;
 }
+
 .cardBtn.incorrect {
   background-color: #c62828 !important;
   color: #ffffff !important;
@@ -238,14 +296,15 @@ footer {
   font-weight: 600;
 }
 
-/* quiz */
 .quizBtnsContainer {
   max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
+
 .quizBtn {
   background-color: transparent;
   padding: 10px;
@@ -256,18 +315,25 @@ footer {
   width: 100%;
   text-align: center;
 }
+
 .quizBtn:hover {
   background-color: blueviolet;
 }
+
 .quizBtn:active {
   transform: scale(0.95);
 }
-/* answer  */
+
 .answer {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
 }
+
 .answerSpan {
   color: green;
   font-weight: bold;
@@ -278,7 +344,10 @@ footer {
   font-size: 20px;
   font-weight: bold;
 }
-/* toggle dark light */
+
+/* ==========================================================================
+   Theme: dark / light
+   ========================================================================== */
 .dark {
   --bg-color: #111;
   --text-color: #fff;
@@ -297,7 +366,9 @@ footer {
   transition: var(--transition);
 }
 
-/* Loader */
+/* ==========================================================================
+   Loader
+   ========================================================================== */
 .loaderContainer {
   display: flex;
   flex-direction: column;
@@ -326,11 +397,232 @@ footer {
   font-size: 1.2rem;
   color: var(--text-color);
   opacity: 0.85;
+  text-align: center;
+  padding: 0 20px;
 }
 
-/* Accessibility & Keyboard Navigation Focus */
+/* ==========================================================================
+   Accessibility & Keyboard Navigation Focus
+   ========================================================================== */
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid blueviolet;
   outline-offset: 4px;
+}
+
+/* ==========================================================================
+   RESPONSIVE — Tablet
+   Applies to screens 1024px and below (large phones landscape → tablets)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .homeLink {
+    font-size: 1.3rem;
+  }
+
+  .counterMiddle h1 {
+    font-size: 4rem;
+  }
+
+  .timeDisplay {
+    font-size: 4rem;
+  }
+
+  .cardQuestion {
+    font-size: 1.3rem;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — Small tablets / large phones
+   Applies to screens 768px and below
+   ========================================================================== */
+@media (max-width: 768px) {
+  .homeSection,
+  .counterContainer,
+  .timeContainer,
+  .quizContainer {
+    height: auto;
+    min-height: 100vh;
+    padding: 90px 16px 100px;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 2.1rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+  }
+
+  .homeLink {
+    font-size: 1.2rem;
+  }
+
+  .counterContent {
+    gap: 16px;
+  }
+
+  .counterMiddle h1 {
+    font-size: 3.2rem;
+  }
+
+  .counterContainer button {
+    padding: 12px 18px;
+  }
+
+  .timeDisplay {
+    font-size: 3rem;
+    letter-spacing: 1px;
+  }
+
+  .timeBtn {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+
+  .cardQuestion {
+    font-size: 1.15rem;
+  }
+
+  .cardBtnsContainer {
+    margin: 20px 0;
+  }
+
+  .cardBtn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    position: static;
+    margin-top: 24px;
+  }
+
+  .backhomeContainer {
+    top: 12px;
+    left: 12px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile
+   Applies to screens 480px and below
+   ========================================================================== */
+@media (max-width: 480px) {
+  .homeSection,
+  .counterContainer,
+  .timeContainer,
+  .quizContainer {
+    padding: 80px 12px 90px;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .homeLink {
+    font-size: 1.05rem;
+  }
+
+  .themeButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .counterContent {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .counterMiddle h1 {
+    font-size: 2.5rem;
+  }
+
+  .counterContainer button {
+    padding: 10px 14px;
+  }
+
+  .timeDisplay {
+    font-size: 2.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  .timeBtnsContainer {
+    gap: 10px;
+  }
+
+  .timeBtn {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .cardContainer {
+    max-width: 100%;
+  }
+
+  .cardQuestion {
+    font-size: 1rem;
+  }
+
+  .cardBtn {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .answer,
+  .score {
+    font-size: 0.9rem;
+  }
+
+  .scoreSpan {
+    font-size: 1rem;
+  }
+
+  .quizBtn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 12px 20px;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE — Very small phones
+   Applies to screens 360px and below
+   ========================================================================== */
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .counterMiddle h1 {
+    font-size: 2rem;
+  }
+
+  .timeDisplay {
+    font-size: 1.75rem;
+  }
+
+  .cardQuestion {
+    font-size: 0.95rem;
+  }
 }
